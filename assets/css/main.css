@@ -3671,6 +3671,8 @@ input, select, textarea {
 				transform: translateY(1rem);
 			}
 
+			
+
 	}
 
 	@media screen and (max-width: 480px) {
@@ -3687,3 +3689,35 @@ input, select, textarea {
 			}
 
 	}
+
+
+	#resume {
+		position: absolute;
+		color: black;
+		right: 20px;
+		bottom: 25px;
+		background-color: white;
+		border-radius: 50%;
+		height: 60px;
+		width: 60px;
+		border: 4px solid rgb(220, 220, 220);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	#linkedin-follow {
+		position: absolute;
+		color: black;
+		right: 20px;
+		bottom: 20px;
+		background-color: white;
+		border-radius: 50%;
+		height: 60px;
+		width: 60px;
+		border: 4px solid rgb(220, 220, 220);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
