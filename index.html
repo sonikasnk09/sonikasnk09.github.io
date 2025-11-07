@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sonika | Digital Analyst Portfolio</title>
+    <meta name="description" content="Portfolio for Sonika, a Digital Analyst specializing in data-driven marketing strategies and business intelligence." />
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              primary: '#6366f1', // Indigo 500
+              secondary: '#0f172a', // Slate 900
+              accent: '#38bdf8', // Sky 400
+            },
+            animation: {
+                blob: "blob 7s infinite",
+            },
+            keyframes: {
+                blob: {
+                    "0%": { transform: "translate(0px, 0px) scale(1)" },
+                    "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                    "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                    "100%": { transform: "translate(0px, 0px) scale(1)" },
+                },
+            },
+          }
+        }
+      }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .text-balance {
+          text-wrap: balance;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.553.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-primary/20 selection:text-primary">
+
+    <!-- Navbar -->
+    <nav id="main-nav" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#hero" class="text-xl font-bold tracking-tight text-slate-900">
+                        Sonika<span class="text-primary">.</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#hero" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Home</a>
+                    <a href="#skills" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Skills</a>
+                    <a href="#education" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Education</a>
+                    <a href="#experience" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Experience</a>
+                    <a href="#contact" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Contact</a>
+                    <a href="/assets/cv/Sonika Resume.pdf" target="_blank" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 transition-all shadow-sm">
+                        Resume
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-expanded="false" aria-label="Toggle menu">
+                        <!-- Menu Icon -->
+                        <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="block h-6 w-6"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                        <!-- X Icon -->
+                        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden h-6 w-6"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden transition-all duration-300 ease-in-out overflow-hidden max-h-0 opacity-0">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-b border-slate-100 shadow-lg">
+                <a href="#hero" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Home</a>
+                <a href="#skills" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Skills</a>
+                <a href="#education" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Education</a>
+                <a href="#experience" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Experience</a>
+                <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Contact</a>
+                <a href="/assets/cv/Sonika Resume.pdf" target="_blank" class="mobile-link block w-full text-center px-3 py-3 mt-4 rounded-md text-base font-medium text-white bg-primary hover:bg-primary/90">Download Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="hero" class="relative pt-28 pb-16 md:pt-40 md:pb-32 overflow-hidden bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                    <!-- Text Content -->
+                    <div class="flex flex-col order-2 lg:order-1 text-center lg:text-left">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 text-balance">
+                            Hello, I'm <span class="text-primary">Sonika</span>
+                        </h1>
+                        <h2 class="mt-4 text-xl md:text-2xl lg:text-3xl font-medium text-slate-600">
+                            Digital Analyst
+                        </h2>
+                        <p class="mt-6 text-base md:text-lg text-slate-500 max-w-2xl mx-auto lg:mx-0 leading-relaxed text-balance">
+                            With over 3+ years of experience at the crossroads of digital marketing and data analytics,
+                            I combine the precision of data analysis with the agility of digital marketing,
+                            guiding cross-functional teams through data-driven narratives that support strategic decisions.
+                        </p>
+                        <!-- Action Buttons -->
+                        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="#skills" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-primary hover:bg-indigo-700 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                                Explore My Work
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 -mr-1 h-5 w-5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </a>
+                            <a href="/assets/cv/Sonika Resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 border-2 border-slate-200 text-base font-medium rounded-full text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-300 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 -ml-1 h-5 w-5 text-slate-400"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                                View Resume
+                            </a>
+                        </div>
+                        <!-- Social Proof -->
+                        <div class="mt-8 flex items-center justify-center lg:justify-start gap-6">
+                            <a href="https://linkedin.com/in/sonikasnk" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-[#0077b5] transition-colors" aria-label="LinkedIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                            </a>
+                            <a href="mailto:sonikasnk09@gmail.com" class="text-slate-400 hover:text-primary transition-colors" aria-label="Email">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Image -->
+                    <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
+                        <div class="relative w-full max-w-md lg:max-w-none">
+                            <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
+                            <div class="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
+                            <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-4000"></div>
+                            <div class="relative rounded-2xl overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500 ease-in-out aspect-[3/4] max-w-[280px] sm:max-w-sm mx-auto lg:mr-0">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80" alt="Sonika Portrait" class="object-cover w-full h-full bg-slate-100" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-base font-semibold text-primary uppercase tracking-wide">Expertise</h2>
+                    <p class="mt-2 text-3xl font-extrabold text-slate-900 sm:text-4xl">My Skills</p>
+                    <p class="mt-4 max-w-2xl text-xl text-slate-500 lg:mx-auto">
+                        A powerful combination of technical data skills and strategic marketing knowledge.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Data Analytics -->
+                    <div class="relative group bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-primary/20 hover:shadow-lg transition-all duration-300">
+                        <div class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity group-hover:scale-110 duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-16 w-16 text-accent"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2 bg-white rounded-lg shadow-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-accent"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-800">Data Analytics</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Python</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">MySQL</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Excel</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">SPSS</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Google Sheets</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Data Cleaning</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Cohorts & Funnels</span>
+                        </div>
+                    </div>
+                    <!-- Visualization & BI -->
+                    <div class="relative group bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-primary/20 hover:shadow-lg transition-all duration-300">
+                        <div class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity group-hover:scale-110 duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-16 w-16 text-primary"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2 bg-white rounded-lg shadow-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-800">Visualization & BI</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Power BI</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Tableau</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Looker Studio</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Zoho Analytics</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">SAP S/4HANA</span>
+                        </div>
+                    </div>
+                    <!-- Digital Marketing -->
+                    <div class="relative group bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-primary/20 hover:shadow-lg transition-all duration-300">
+                        <div class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity group-hover:scale-110 duration-300">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-16 w-16 text-pink-500"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2 bg-white rounded-lg shadow-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-pink-500"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-800">Digital Marketing</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">SEO & SEM</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Email Marketing</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Social Media</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">PPC</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">A/B Testing</span>
+                        </div>
+                    </div>
+                    <!-- Marketing Tools -->
+                    <div class="relative group bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-primary/20 hover:shadow-lg transition-all duration-300">
+                        <div class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity group-hover:scale-110 duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-16 w-16 text-green-500"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2 bg-white rounded-lg shadow-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-green-500"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-800">Marketing Tools</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                             <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Google Analytics</span>
+                             <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Google Ads</span>
+                             <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Meta Ads</span>
+                             <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">SEMrush</span>
+                             <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Screaming Frog</span>
+                             <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Mailchimp</span>
+                             <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">GSC</span>
+                        </div>
+                    </div>
+                    <!-- Web & Management -->
+                    <div class="relative group bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-primary/20 hover:shadow-lg transition-all duration-300">
+                        <div class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity group-hover:scale-110 duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-16 w-16 text-orange-500"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2 bg-white rounded-lg shadow-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-orange-500"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-800">Web & Management</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">WordPress</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">HTML/CSS (Basic)</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Jira</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Notion</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Slack</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Microsoft Office</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 border border-slate-200 shadow-sm">Github</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-base font-semibold text-primary uppercase tracking-wide">Academic Background</h2>
+                    <p class="mt-2 text-3xl font-extrabold text-slate-900 sm:text-4xl">Education</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Wright State -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl"></div>
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 bg-primary/10 text-primary rounded-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-slate-900">Wright State University</h3>
+                                <p class="text-slate-500 text-sm">Main Campus — Dayton, Ohio</p>
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-semibold text-slate-800 mb-2">Master of Science in Marketing Analytics and Insights</h4>
+                        <div class="mt-auto pt-6 flex items-center justify-between text-sm font-medium">
+                            <span class="flex items-center text-slate-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 mr-2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                                Aug 2022 – Jul 2024
+                            </span>
+                            <span class="px-3 py-1 bg-green-50 text-green-700 rounded-full border border-green-100">GPA: 3.6</span>
+                        </div>
+                    </div>
+                    <!-- Delhi University -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-accent/10 rounded-full blur-2xl"></div>
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 bg-accent/10 text-accent rounded-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-slate-900">Delhi University</h3>
+                                <p class="text-slate-500 text-sm">Kalindi College — New Delhi, India</p>
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-semibold text-slate-800 mb-2">Bachelor of Science in Life Sciences</h4>
+                        <div class="mt-auto pt-6 flex items-center justify-between text-sm font-medium">
+                            <span class="flex items-center text-slate-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 mr-2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                                Jul 2017 – May 2020
+                            </span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full border border-slate-200">GPA: 3.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-3 gap-12">
+                    <!-- Header section sticks on large screens -->
+                    <div class="lg:col-span-1">
+                        <div class="lg:sticky lg:top-28">
+                            <h2 class="text-base font-semibold text-primary uppercase tracking-wide">Career Highlights</h2>
+                            <p class="mt-2 text-3xl font-extrabold text-slate-900 sm:text-4xl">My Experience</p>
+                            <p class="mt-4 text-lg text-slate-500">
+                                A track record of delivering data-driven results and optimizing digital strategies across various platforms.
+                            </p>
+                            <div class="mt-8 hidden lg:block">
+                                <a href="/assets/cv/Sonika Resume.pdf" target="_blank" class="text-primary font-medium hover:text-indigo-700 flex items-center">
+                                    View Full Resume →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- List section -->
+                    <div class="lg:col-span-2">
+                        <div class="space-y-6">
+                            <div class="flex gap-4 p-4 md:p-6 rounded-xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-md transition-all duration-200">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                </div>
+                                <p class="text-slate-700 leading-relaxed">Increased organic website traffic on an e-commerce site by 49% YoY, contributing to 79.9% revenue growth through a comprehensive website enhancement plan.</p>
+                            </div>
+                            <div class="flex gap-4 p-4 md:p-6 rounded-xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-md transition-all duration-200">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                </div>
+                                <p class="text-slate-700 leading-relaxed">Reduced customer churn by 12% by developing Excel and Power BI dashboards for churn analysis and customer feedback trends.</p>
+                            </div>
+                            <div class="flex gap-4 p-4 md:p-6 rounded-xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-md transition-all duration-200">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                </div>
+                                <p class="text-slate-700 leading-relaxed">Built automated email workflows in HubSpot and integrated CRM data for personalized email marketing, boosting open rates by 12.37%.</p>
+                            </div>
+                            <div class="flex gap-4 p-4 md:p-6 rounded-xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-md transition-all duration-200">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                </div>
+                                <p class="text-slate-700 leading-relaxed">Extract, clean, and analyze complex datasets from multiple marketing and sales platforms using SQL, Excel, and Python to optimize campaign performance.</p>
+                            </div>
+                            <div class="flex gap-4 p-4 md:p-6 rounded-xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-md transition-all duration-200">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                </div>
+                                <p class="text-slate-700 leading-relaxed">Developed SQL queries for data validation, quality checks, and partner data requests.</p>
+                            </div>
+                            <div class="flex gap-4 p-4 md:p-6 rounded-xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-md transition-all duration-200">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                </div>
+                                <p class="text-slate-700 leading-relaxed">Leveraged Python & Jupyter Notebooks to clean, normalize, and compare cross-system data.</p>
+                            </div>
+                            <div class="flex gap-4 p-4 md:p-6 rounded-xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-md transition-all duration-200">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                </div>
+                                <p class="text-slate-700 leading-relaxed">Conducted trend analysis and statistical testing to uncover issues in digital engagement and site traffic conversions.</p>
+                            </div>
+                            <div class="flex gap-4 p-4 md:p-6 rounded-xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-md transition-all duration-200">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                </div>
+                                <p class="text-slate-700 leading-relaxed">Translated technical/business requirements into optimized data solutions guiding cross-functional teams.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-slate-900 relative overflow-hidden">
+            <!-- Background decoration -->
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff33_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Let's Connect</h2>
+                    <p class="mt-4 text-xl text-slate-300">
+                        If you’d like to discuss a project, collaboration, or job opportunity, feel free to reach out.
+                    </p>
+                </div>
+                <div class="mt-16 grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <!-- Email Card -->
+                    <a href="mailto:sonikasnk09@gmail.com" class="group flex flex-col items-center p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-primary/50 transition-all duration-300">
+                        <div class="h-16 w-16 flex items-center justify-center rounded-full bg-primary/20 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        </div>
+                        <h3 class="mt-6 text-xl font-semibold text-white">Email</h3>
+                        <p class="mt-2 text-slate-400 text-center group-hover:text-white transition-colors">sonikasnk09@gmail.com</p>
+                    </a>
+                    <!-- LinkedIn Card -->
+                    <a href="https://linkedin.com/in/sonikasnk" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[#0077b5]/50 transition-all duration-300">
+                        <div class="h-16 w-16 flex items-center justify-center rounded-full bg-[#0077b5]/20 text-[#0077b5] group-hover:bg-[#0077b5] group-hover:text-white transition-colors duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                        </div>
+                        <h3 class="mt-6 text-xl font-semibold text-white">LinkedIn</h3>
+                        <p class="mt-2 text-slate-400 text-center group-hover:text-white transition-colors">linkedin.com/in/sonikasnk</p>
+                    </a>
+                    <!-- Phone Card -->
+                    <div class="group flex flex-col items-center p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                        <div class="h-16 w-16 flex items-center justify-center rounded-full bg-emerald-500/20 text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <h3 class="mt-6 text-xl font-semibold text-white">Phone</h3>
+                        <p class="mt-2 text-slate-400 text-center">+1 937-794-3865</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-slate-500 text-sm">© <span id="year"></span> Sonika. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            const yearEl = document.getElementById('year');
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
+            }
+
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconMenu = document.getElementById('icon-menu');
+            const iconClose = document.getElementById('icon-close');
+            const nav = document.getElementById('main-nav');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            function toggleMenu() {
+                if (!mobileMenu || !iconMenu || !iconClose || !mobileMenuBtn) return;
+                
+                const isOpen = mobileMenu.classList.contains('max-h-96');
+                if (isOpen) {
+                    // Close menu
+                    mobileMenu.classList.remove('max-h-96', 'opacity-100');
+                    mobileMenu.classList.add('max-h-0', 'opacity-0');
+                    iconMenu.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    
+                    // Revert nav background if at top
+                    if (window.scrollY <= 20 && nav) {
+                        nav.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-slate-100');
+                        nav.classList.add('bg-transparent');
+                    }
+                } else {
+                    // Open menu
+                    mobileMenu.classList.remove('max-h-0', 'opacity-0');
+                    mobileMenu.classList.add('max-h-96', 'opacity-100');
+                    iconMenu.classList.add('hidden');
+                    iconClose.classList.remove('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                    
+                    // Ensure nav has background when menu is open
+                    if (nav) {
+                        nav.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-slate-100');
+                        nav.classList.remove('bg-transparent');
+                    }
+                }
+            }
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', toggleMenu);
+            }
+
+            // Close mobile menu when a link is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenu && mobileMenu.classList.contains('max-h-96')) {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            // Scroll Event for Navbar Background
+            window.addEventListener('scroll', () => {
+                if (!nav) return;
+                
+                if (window.scrollY > 20) {
+                    nav.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-slate-100');
+                    nav.classList.remove('bg-transparent');
+                } else {
+                     // Only remove background if menu is closed
+                    if (mobileMenu && !mobileMenu.classList.contains('max-h-96')) {
+                        nav.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-slate-100');
+                        nav.classList.add('bg-transparent');
+                    }
+                }
+            });
+        });
+    </script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
